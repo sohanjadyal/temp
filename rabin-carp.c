@@ -28,9 +28,10 @@ int main()
         h = (h * d) % q;
     
 
-    for(i = 0; i < m; i++)
+    for(i = 0; i < m; i++){
         p = (d * p + pat[i]) % q;
         t = (d * t + txt[i]) % q;
+    }
 
     clock_t start = clock();
 
