@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 
 #define MAX 100
@@ -43,6 +44,20 @@ int main() {
             }
         }
     }
+
+    for(j = 0; j < E; j++) {
+
+    int u = edge[j].u;
+    int v = edge[j].v;
+    int w = edge[j].w;
+
+    if(dist[u] != INF &&
+       dist[u] + w < dist[v]) {
+
+        printf("\nNegative Weight Cycle Detected\n");
+        return 0;
+    }
+}
 
     printf("\nDistances:\n");
 

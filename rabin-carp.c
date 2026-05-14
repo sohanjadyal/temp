@@ -25,43 +25,32 @@ int main()
     int h = 1;
 
     for(i = 0; i < m - 1; i++)
-    {
         h = (h * d) % q;
-    }
+    
 
     for(i = 0; i < m; i++)
-    {
         p = (d * p + pat[i]) % q;
         t = (d * t + txt[i]) % q;
-    }
 
     clock_t start = clock();
 
-    for(i = 0; i <= n - m; i++)
-    {
-        if(p == t)
-        {
-            for(j = 0; j < m; j++)
-            {
+    for(i = 0; i <= n - m; i++){
+        if(p == t){
+
+            for(j = 0; j < m; j++){
                 if(txt[i + j] != pat[j])
                     break;
             }
 
-            if(j == m)
-            {
+            if(j == m) 
                 printf("Pattern found at %d\n", i);
-            }
         }
 
-        if(i < n - m)
-        {
-            t = (d * (t - txt[i] * h)
-                 + txt[i + m]) % q;
+        if(i < n - m){
+            t = (d * (t - txt[i] * h) + txt[i + m]) % q;
 
             if(t < 0)
-            {
                 t = t + q;
-            }
         }
     }
 

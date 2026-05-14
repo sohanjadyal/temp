@@ -8,14 +8,11 @@
 int m[MAX][MAX];
 int s[MAX][MAX];
 
-void printOptimal(int i, int j)
-{
-    if(i == j)
-    {
+void printOptimal(int i, int j){
+    if(i == j){
         printf("M%d", i);
     }
-    else
-    {
+    else{
         printf("(");
 
         printOptimal(i, s[i][j]);
@@ -25,8 +22,7 @@ void printOptimal(int i, int j)
     }
 }
 
-int main()
-{
+int main(){
     int n;
     int p[MAX];
 
@@ -36,9 +32,8 @@ int main()
     printf("Enter dimensions array:\n");
 
     for(int i = 0; i <= n; i++)
-    {
         scanf("%d", &p[i]);
-    }
+    
 
     clock_t start = clock();
 
@@ -47,24 +42,20 @@ int main()
         m[i][i] = 0;
     }
 
-    for(int L = 2; L <= n; L++)
-    {
-        for(int i = 1; i <= n - L + 1; i++)
-        {
+    for(int L = 2; L <= n; L++){
+        for(int i = 1; i <= n - L + 1; i++){
             int j = i + L - 1;
 
             m[i][j] = INF;
 
-            for(int k = i; k < j; k++)
-            {
+            for(int k = i; k < j; k++){
                 int q;
 
                 q = m[i][k] +
                     m[k + 1][j] +
                     p[i - 1] * p[k] * p[j];
 
-                if(q < m[i][j])
-                {
+                if(q < m[i][j]){
                     m[i][j] = q;
                     s[i][j] = k;
                 }
@@ -76,10 +67,8 @@ int main()
 
     printf("\nM Table (Minimum Multiplications):\n");
 
-    for(int i = 1; i <= n; i++)
-    {
-        for(int j = 1; j <= n; j++)
-        {
+    for(int i = 1; i <= n; i++){
+        for(int j = 1; j <= n; j++){
             if(i > j)
                 printf("0\t");
             else
@@ -91,10 +80,8 @@ int main()
 
     printf("\nS Table (K Values / Parenthesization):\n");
 
-    for(int i = 1; i <= n; i++)
-    {
-        for(int j = 1; j <= n; j++)
-        {
+    for(int i = 1; i <= n; i++){
+        for(int j = 1; j <= n; j++){
             if(i >= j)
                 printf("0\t");
             else
